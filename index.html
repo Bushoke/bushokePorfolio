@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bushoke Bwahya Isaac - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy': '#1e3a8a',
+                        'gold': '#fbbf24',
+                        'dark-navy': '#1e40af'
+                    },
+                    animation: {
+                        'fadeInUp': 'fadeInUp 0.6s ease-out',
+                        'slideInLeft': 'slideInLeft 0.8s ease-out',
+                        'slideInRight': 'slideInRight 0.8s ease-out',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'pulse-slow': 'pulse 3s infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .skill-card {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: #fbbf24;
+            box-shadow: 0 10px 25px rgba(251, 191, 36, 0.2);
+        }
+
+        .section-divider {
+            height: 3px;
+            background: linear-gradient(90deg, #1e3a8a, #fbbf24, #1e3a8a);
+            border-radius: 2px;
+        }
+
+        .typing-animation {
+            overflow: hidden;
+            border-right: 3px solid #fbbf24;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #fbbf24 }
+        }
+
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            .dark-mode-bg {
+                background-color: #1f2937;
+            }
+            .dark-mode-text {
+                color: #f9fafb;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-lg z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold text-navy">
+                    <span class="gradient-text">Bushoke</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#accueil" class="text-navy hover:text-gold transition-colors duration-300">Accueil</a>
+                    <a href="#apropos" class="text-navy hover:text-gold transition-colors duration-300">À propos</a>
+                    <a href="#competences" class="text-navy hover:text-gold transition-colors duration-300">Compétences</a>
+                    <a href="#projets" class="text-navy hover:text-gold transition-colors duration-300">Projets</a>
+                    <a href="#contact" class="text-navy hover:text-gold transition-colors duration-300">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-navy">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-2 space-y-2">
+                <a href="#accueil" class="block text-navy hover:text-gold transition-colors duration-300 py-2">Accueil</a>
+                <a href="#apropos" class="block text-navy hover:text-gold transition-colors duration-300 py-2">À propos</a>
+                <a href="#competences" class="block text-navy hover:text-gold transition-colors duration-300 py-2">Compétences</a>
+                <a href="#projets" class="block text-navy hover:text-gold transition-colors duration-300 py-2">Projets</a>
+                <a href="#contact" class="block text-navy hover:text-gold transition-colors duration-300 py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-blue-50 to-white pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left animate-slideInLeft">
+                    <h1 class="text-4xl md:text-6xl font-bold text-navy mb-4">
+                        Bushoke Bwahya
+                        <span class="gradient-text block">Isaac</span>
+                    </h1>
+                    <div class="text-xl md:text-2xl text-gray-600 mb-6 typing-animation">
+                        Administrateur Réseau & Système
+                    </div>
+                    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                        Développeur passionné et expert en infrastructure réseau, spécialisé dans les technologies modernes et l'électronique embarquée.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#contact" class="bg-navy text-white px-8 py-3 rounded-full hover:bg-dark-navy transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            <i class="fas fa-envelope mr-2"></i>Me Contacter
+                        </a>
+                        <a href="#projets" class="border-2 border-navy text-navy px-8 py-3 rounded-full hover:bg-navy hover:text-white transition-all duration-300 transform hover:scale-105">
+                            <i class="fas fa-folder mr-2"></i>Mes Projets
+                        </a>
+                    </div>
+                </div>
+                <div class="flex justify-center lg:justify-end animate-slideInRight">
+                    <div class="relative">
+                        <div class="w-80 h-80 rounded-full overflow-hidden border-4 border-gold shadow-2xl transform hover:scale-105 transition-all duration-300">
+                            <img src="https://pfst.cf2.poecdn.net/base/image/fd773d87022be62093e9dd680f701f31262d23e3eb1e3d07b1cf8c2a7c87b396?w=600&h=600" 
+                                 alt="Bushoke Bwahya Isaac" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -top-4 -right-4 w-16 h-16 bg-gold rounded-full flex items-center justify-center animate-bounce-slow">
+                            <i class="fas fa-code text-navy text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="apropos" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-fadeInUp">
+                <h2 class="text-4xl md:text-5xl font-bold text-navy mb-4">À Propos de Moi</h2>
+                <div class="section-divider w-24 mx-auto mb-8"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Découvrez mon parcours et ma passion pour la technologie
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-slideInLeft">
+                    <div class="bg-white p-8 rounded-2xl shadow-xl">
+                        <h3 class="text-2xl font-bold text-navy mb-6">
+                            <i class="fas fa-user-circle text-gold mr-3"></i>Informations Personnelles
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-calendar text-gold w-6"></i>
+                                <span class="ml-3"><strong>Date de naissance:</strong> 18 Octobre 1999</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-gold w-6"></i>
+                                <span class="ml-3"><strong>Lieu de naissance:</strong> Goma, RD Congo</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-flag text-gold w-6"></i>
+                                <span class="ml-3"><strong>Nationalité:</strong> Congolaise</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-briefcase text-gold w-6"></i>
+                                <span class="ml-3"><strong>Profession:</strong> Administrateur Réseau & Système</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animate-slideInRight">
+                    <div class="bg-white p-8 rounded-2xl shadow-xl">
+                        <h3 class="text-2xl font-bold text-navy mb-6">
+                            <i class="fas fa-rocket text-gold mr-3"></i>Ma Mission
+                        </h3>
+                        <p class="text-gray-700 mb-6 leading-relaxed">
+                            Passionné par l'innovation technologique, je me spécialise dans l'administration des systèmes et réseaux, 
+                            le développement d'applications modernes et l'installation d'équipements de télécommunication avancés.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center p-4 bg-blue-50 rounded-xl">
+                                <div class="text-3xl font-bold text-navy">5+</div>
+                                <div class="text-sm text-gray-600">Langages de Programmation</div>
+                            </div>
+                            <div class="text-center p-4 bg-gold/10 rounded-xl">
+                                <div class="text-3xl font-bold text-navy">∞</div>
+                                <div class="text-sm text-gray-600">Projets Réalisés</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="competences" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-fadeInUp">
+                <h2 class="text-4xl md:text-5xl font-bold text-navy mb-4">Compétences Techniques</h2>
+                <div class="section-divider w-24 mx-auto mb-8"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Technologies et outils que je maîtrise pour créer des solutions innovantes
+                </p>
+            </div>
+
+            <!-- Programming Languages -->
+            <div class="mb-16">
+                <h3 class="text-3xl font-bold text-navy mb-8 text-center">
+                    <i class="fas fa-code text-gold mr-3"></i>Langages de Programmation
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                    <div class="skill-card bg-white p-6 rounded-xl shadow-lg text-center">
+                        <i class="fab fa-python text-5xl text-blue-500 mb-4"></i>
+                        <h4 class="font-bold text-navy">Python</h4>
+                    </div>
+                    <div class="skill-card bg-white p-6 rounded-xl shadow-lg text-center">
+                        <i class="fas fa-code text-5xl text-purple-600 mb-4"></i>
+                        <h4 class="font-bold text-navy">C#</h4>
+                    </div>
+                    <div class="skill-card bg-white p-6 rounded-xl shadow-lg text-center">
+                        <i class="fas fa-code text-5xl text-blue-700 mb-4"></i>
+                        <h4 class="font-bold text-navy">C++</h4>
+                    </div>
+                    <div class="skill-card bg-white p-6 rounded-xl shadow-lg text-center">
+                        <i class="fab fa-php text-5xl text-indigo-600 mb-4"></i>
+                        <h4 class="font-bold text-navy">PHP</h4>
+                    </div>
+                    <div class="skill-card bg-white p-6 rounded-xl shadow-lg text-center">
+                        <i class="fas fa-microchip text-5xl text-teal-600 mb-4"></i>
+                        <h4 class="font-bold text-navy">Arduino</h4>
+                    </div>
+                    <div class="skill-card bg-white p-6 rounded-xl shadow-lg text-center">
+                        <i class="fas fa-database text-5xl text-green-600 mb-4"></i>
+                        <h4 class="font-bold text-navy">Database</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frameworks & Technologies -->
+            <div class="mb-16">
+                <h3 class="text-3xl font-bold text-navy mb-8 text-center">
+                    <i class="fas fa-mobile-alt text-gold mr-3"></i>Frameworks & Technologies
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="skill-card bg-white p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <i class="fab fa-flutter text-4xl text-blue-400 mr-4"></i>
+                            <h4 class="text-xl font-bold text-navy">Flutter</h4>
+                        </div>
+                        <p class="text-gray-600">Développement d'applications mobiles cross-platform</p>
+                    </div>
+                    <div class="skill-card bg-white p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-network-wired text-4xl text-green-600 mr-4"></i>
+                            <h4 class="text-xl font-bold text-navy">Administration Réseau</h4>
+                        </div>
+                        <p class="text-gray-600">Configuration et maintenance des infrastructures réseau</p>
+                    </div>
+                    <div class="skill-card bg-white p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-server text-4xl text-red-600 mr-4"></i>
+                            <h4 class="text-xl font-bold text-navy">Administration Système</h4>
+                        </div>
+                        <p class="text-gray-600">Gestion des serveurs et systèmes d'exploitation</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specializations -->
+            <div>
+                <h3 class="text-3xl font-bold text-navy mb-8 text-center">
+                    <i class="fas fa-satellite text-gold mr-3"></i>Spécialisations
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="skill-card bg-gradient-to-br from-blue-50 to-white p-6 rounded-xl shadow-lg text-center">
+                        <i class="fas fa-satellite-dish text-4xl text-blue-600 mb-4"></i>
+                        <h4 class="font-bold text-navy">VSAT</h4>
+                        <p class="text-sm text-gray-600 mt-2">Installation antennes</p>
+                    </div>
+                    <div class="skill-card bg-gradient-to-br from-gold/10 to-white p-6 rounded-xl shadow-lg text-center">
+                        <i class="fas fa-wifi text-4xl text-orange-600 mb-4"></i>
+                        <h4 class="font-bold text-navy">Starlink</h4>
+                        <p class="text-sm text-gray-600 mt-2">Installation & configuration</p>
+                    </div>
+                    <div class="skill-card bg-gradient-to-br from-green-50 to-white p-6 rounded-xl shadow-lg text-center">
+                        <i class="fas fa-microchip text-4xl text-green-600 mb-4"></i>
+                        <h4 class="font-bold text-navy">Électronique Embarquée</h4>
+                        <p class="text-sm text-gray-600 mt-2">Systèmes intégrés</p>
+                    </div>
+                    <div class="skill-card bg-gradient-to-br from-yellow-50 to-white p-6 rounded-xl shadow-lg text-center">
+                        <i class="fas fa-bolt text-4xl text-yellow-600 mb-4"></i>
+                        <h4 class="font-bold text-navy">Électricité Industrielle</h4>
+                        <p class="text-sm text-gray-600 mt-2">Systèmes électriques</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projets" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-fadeInUp">
+                <h2 class="text-4xl md:text-5xl font-bold text-navy mb-4">Projets & Réalisations</h2>
+                <div class="section-divider w-24 mx-auto mb-8"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Découvrez quelques-unes de mes réalisations et projets marquants
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Cards -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
+                    <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-48 flex items-center justify-center">
+                        <i class="fas fa-mobile-alt text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-navy mb-3">Applications Flutter</h3>
+                        <p class="text-gray-600 mb-4">Développement d'applications mobiles cross-platform avec Flutter pour diverses entreprises.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Flutter</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Dart</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
+                    <div class="bg-gradient-to-r from-green-500 to-teal-600 h-48 flex items-center justify-center">
+                        <i class="fas fa-network-wired text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-navy mb-3">Infrastructure Réseau</h3>
+                        <p class="text-gray-600 mb-4">Mise en place et administration de réseaux d'entreprise avec équipements professionnels.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Cisco</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Réseau</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
+                    <div class="bg-gradient-to-r from-orange-500 to-red-600 h-48 flex items-center justify-center">
+                        <i class="fas fa-satellite-dish text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-navy mb-3">Installation VSAT/Starlink</h3>
+                        <p class="text-gray-600 mb-4">Installation et configuration d'antennes satellites pour connexions haut débit.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">VSAT</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Starlink</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
+                    <div class="bg-gradient-to-r from-purple-500 to-pink-600 h-48 flex items-center justify-center">
+                        <i class="fas fa-code text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-navy mb-3">Applications Web</h3>
+                        <p class="text-gray-600 mb-4">Développement d'applications web avec PHP et technologies modernes.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">PHP</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
+                    <div class="bg-gradient-to-r from-teal-500 to-cyan-600 h-48 flex items-center justify-center">
+                        <i class="fas fa-microchip text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-navy mb-3">Projets Arduino</h3>
+                        <p class="text-gray-600 mb-4">Développement de systèmes embarqués et automatisation avec Arduino.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm">Arduino</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">IoT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
+                    <div class="bg-gradient-to-r from-indigo-500 to-blue-600 h-48 flex items-center justify-center">
+                        <i class="fas fa-server text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-navy mb-3">Administration Système</h3>
+                        <p class="text-gray-600 mb-4">Gestion et maintenance de serveurs Linux/Windows en environnement professionnel.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Linux</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Windows Server</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-navy text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-fadeInUp">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Contactez-Moi</h2>
+                <div class="section-divider w-24 mx-auto mb-8 bg-gradient-to-r from-gold to-yellow-300"></div>
+                <p class="text-xl text-blue-200 max-w-3xl mx-auto">
+                    Prêt à collaborer sur votre prochain projet ? N'hésitez pas à me contacter !
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="animate-slideInLeft">
+                    <h3 class="text-2xl font-bold mb-6">
+                        <i class="fas fa-envelope text-gold mr-3"></i>Restons en Contact
+                    </h3>
+                    <p class="text-blue-200 mb-8 leading-relaxed">
+                        Je suis toujours ouvert aux nouvelles opportunités et aux projets intéressants. 
+                        Que ce soit pour une collaboration, un projet ou simplement pour discuter de technologie.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-navy"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold">Localisation</div>
+                                <div class="text-blue-200">Goma, RD Congo</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-phone text-navy"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold">Téléphone</div>
+                                <div class="text-blue-200">+243 978424035</div>
+                                <div class="text-blue-200">+257 678889666</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-navy"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold">Email</div>
+                                <div class="text-blue-200">isaacbwahya@gmail.com</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-globe text-navy"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold">Disponibilité</div>
+                                <div class="text-blue-200">Ouvert aux projets</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-slideInRight">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold mb-6">
+                            <i class="fas fa-paper-plane text-gold mr-3"></i>Envoyez un Message
+                        </h3>
+                        <form class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Nom Complet</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-gold text-base" placeholder="Votre nom">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Email</label>
+                                <input type="email" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-gold text-base" placeholder="votre@email.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Message</label>
+                                <textarea rows="5" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-gold resize-none text-base" placeholder="Votre message..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-gold text-navy py-3 rounded-lg font-bold hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105">
+                                <i class="fas fa-send mr-2"></i>Envoyer le Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold gradient-text mb-4">Isaac Portfolio</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Administrateur Réseau & Système passionné par l'innovation technologique 
+                        et le développement de solutions modernes.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Liens Rapides</h4>
+                    <div class="space-y-2">
+                        <a href="#accueil" class="block text-gray-400 hover:text-gold transition-colors duration-300">Accueil</a>
+                        <a href="#apropos" class="block text-gray-400 hover:text-gold transition-colors duration-300">À propos</a>
+                        <a href="#competences" class="block text-gray-400 hover:text-gold transition-colors duration-300">Compétences</a>
+                        <a href="#projets" class="block text-gray-400 hover:text-gold transition-colors duration-300">Projets</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Technologies</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-800 text-gold px-3 py-1 rounded-full text-sm">Python</span>
+                        <span class="bg-gray-800 text-gold px-3 py-1 rounded-full text-sm">Flutter</span>
+                        <span class="bg-gray-800 text-gold px-3 py-1 rounded-full text-sm">C#</span>
+                        <span class="bg-gray-800 text-gold px-3 py-1 rounded-full text-sm">Arduino</span>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2024 Bushoke Bwahya Isaac. Tous droits réservés.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/25767888966" target="_blank" class="fixed bottom-8 left-8 bg-green-500 text-white w-16 h-16 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 transform hover:scale-110 flex items-center justify-center z-50 animate-pulse-slow">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="fixed bottom-8 right-8 bg-gold text-navy w-12 h-12 rounded-full shadow-lg hover:bg-yellow-300 transition-all duration-300 transform hover:scale-110 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('bg-white/98');
+            } else {
+                navbar.classList.remove('bg-white/98');
+            }
+        });
+
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.remove('opacity-0', 'invisible');
+                scrollToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                scrollToTopBtn.classList.add('opacity-0', 'invisible');
+                scrollToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.animate-fadeInUp, .animate-slideInLeft, .animate-slideInRight').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            observer.observe(el);
+        });
+
+        // Contact form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const message = this.querySelector('textarea').value;
+            
+            // Simple validation
+            if (!name || !email || !message) {
+                alert('Veuillez remplir tous les champs.');
+                return;
+            }
+            
+            // Simulate form submission
+            const button = this.querySelector('button');
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Envoi en cours...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                alert('Message envoyé avec succès ! Je vous répondrai bientôt.');
+                this.reset();
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }, 2000);
+        });
+
+        // Add some interactive effects
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Typing animation for hero text
+        const typingText = document.querySelector('.typing-animation');
+        if (typingText) {
+            const text = typingText.textContent;
+            typingText.textContent = '';
+            typingText.style.width = '0';
+            
+            setTimeout(() => {
+                let i = 0;
+                const typeWriter = () => {
+                    if (i < text.length) {
+                        typingText.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 100);
+                    }
+                };
+                typeWriter();
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
